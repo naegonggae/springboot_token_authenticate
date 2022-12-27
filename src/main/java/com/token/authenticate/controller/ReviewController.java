@@ -15,8 +15,8 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @PostMapping
-    public ResponseEntity<String> writeReview(Authentication authentication) {
+    public ResponseEntity<String> writeReview(Authentication authentication) { // Authentication import security로 해야돼
         return ResponseEntity.ok()
-                .body(reviewService.write(authentication.getName()));
+                .body(reviewService.write(authentication.getName())); // userName이 넘어감
     }
 }

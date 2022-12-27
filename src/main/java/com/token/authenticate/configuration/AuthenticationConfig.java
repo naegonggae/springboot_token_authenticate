@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity // 스프링시큐리티 작동시작
 @RequiredArgsConstructor
 public class AuthenticationConfig {
 
@@ -28,8 +28,8 @@ public class AuthenticationConfig {
                 .csrf().disable()
                 .cors().and()
                 .authorizeRequests()
-                .antMatchers("/api/v1/users/login").permitAll() // join, login은 언제나 가능
-                .antMatchers(HttpMethod.POST, "/api/v1/reviews").authenticated()  // 문을 만들기 // 모든 post요청을 권한이 있어야 받게함 , 순서도 중요!
+                .antMatchers("/api/v1/users/login").permitAll() // join, login은 인증을 안받아도 되게 풀어준다.
+                .antMatchers(HttpMethod.POST, "/api/v1/reviews").authenticated()  // 문을 만들기 // 모든 post요청을 인증을 받아야 풀어준다. , 순서도 중요!
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // jwt사용하는 경우 씀

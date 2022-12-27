@@ -11,10 +11,10 @@ public class UserService {
 
     @Value("${jwt.token.secret}")
     private String secretKey;
+    private Long expiredTime = 1000 * 60 * 60l;
 
-    private Long expiredTime = 1000*60*60l;
     public String login(String userName, String password) {
         log.info("secretKey:{}", secretKey);
-        return JwtTokenUtil.createToken("sanghun", secretKey, expiredTime) ;
+        return JwtTokenUtil.createToken("dal", secretKey, expiredTime);
     }
 }
