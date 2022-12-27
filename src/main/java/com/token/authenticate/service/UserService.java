@@ -1,12 +1,20 @@
 package com.token.authenticate.service;
 
+import com.token.authenticate.utils.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class UserService {
 
+    @Value("${jwt.token.secret}")
+    private String secretKey;
+
+    private Long expiredTime = 1000*60*60l;
     public String login(String userName, String password) {
-        return "토큰이 발행되었습니다.";
+        log.info("secretKey:{}", secretKey);
+        return JwtTokenUtil.createToken("sanghun", secretKey, expiredTime) ;
     }
 }
