@@ -1,5 +1,5 @@
 jwt:
   token:
-    secret: "hello.world.ee.ff"
+    secret: hello.world.ee.ff
 server:
   port: 8081

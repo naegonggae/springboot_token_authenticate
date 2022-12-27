@@ -39,3 +39,16 @@ public class AuthenticationConfig {
                 .build();
     }
 }
+//Spring Security넣기 전
+//Client(User) —> API → EventHandler → Controller
+//
+//Spring Security넣은 후
+//Client(User) —> API→ 인증계층(Filter Chain) → EventHandler → Controller
+//
+//인증계층 기본값 : 모든 요청을 authenticated() 인증필요로 막습니다.
+//
+//
+//그러고나서
+//.antMatchers("/api/**").permitAll()
+//.antMatchers("/api/v1/users/join", "/api/v1/users/login").permitAll()
+//이걸로 권한을 허용함
